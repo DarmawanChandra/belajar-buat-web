@@ -1,0 +1,805 @@
+/* ================================================================
+   style.css: semua pengaturan tampilan website
+
+   Daftar isi:
+    1. Variabel (warna, font, ukuran)  ← ganti tema website di sini
+    2. Dasar
+    3. Komponen umum (container, judul, tombol, kartu, tag)
+    4. Header & navigasi
+    5. Beranda (hero)
+    6. Tentang Saya
+    7. Perjalanan Belajar
+    8. Proyek
+    9. Kontak
+   10. Footer
+   11. Animasi
+
+   Pendekatan "mobile-first": aturan dasar ditulis untuk layar HP,
+   lalu @media (min-width: ...) menambah aturan untuk layar lebih besar.
+   ================================================================ */
+
+
+/* ----------------------------------------------------------------
+   1. VARIABEL
+   Variabel CSS (diawali --) menyimpan nilai yang dipakai berulang kali.
+   Mau ganti warna seluruh website? Cukup ubah nilainya di sini.
+   Kalau mengganti warna aksen, sesuaikan juga versi transparannya
+   (contoh: 56, 189, 248 adalah kode RGB dari #38bdf8).
+   ---------------------------------------------------------------- */
+:root {
+  --color-bg: #0b1120;                          /* latar belakang utama */
+  --color-surface: #111a2e;                     /* latar kartu */
+  --color-border: rgba(148, 163, 184, 0.16);    /* garis tepi tipis */
+  --color-text: #e2e8f0;                        /* teks utama */
+  --color-text-muted: #94a3b8;                  /* teks pendukung (lebih redup) */
+
+  --color-accent: #38bdf8;                      /* aksen 1: biru langit */
+  --color-accent-soft: rgba(56, 189, 248, 0.15);
+  --color-accent-2: #a78bfa;                    /* aksen 2: ungu */
+  --color-accent-2-soft: rgba(167, 139, 250, 0.15);
+  --color-glow: rgba(56, 189, 248, 0.45);       /* bayangan bercahaya */
+  --color-success: #4ade80;                     /* hijau untuk status */
+  --color-success-soft: rgba(74, 222, 128, 0.15);
+
+  --gradient: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
+
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --radius: 16px;                /* kelengkungan sudut kartu */
+  --container-width: 1100px;     /* lebar maksimal konten */
+  --header-height: 72px;
+}
+
+
+/* ----------------------------------------------------------------
+   2. DASAR
+   ---------------------------------------------------------------- */
+
+/* Hapus jarak bawaan browser & buat ukuran elemen lebih mudah dihitung */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;                    /* scroll halus saat menu diklik */
+  scroll-padding-top: var(--header-height);   /* judul tidak tertutup header */
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  color: var(--color-text);
+  /* Latar gelap + dua cahaya lembut di bagian atas halaman */
+  background:
+    radial-gradient(circle 600px at 10% 0%, var(--color-accent-soft), transparent),
+    radial-gradient(circle 500px at 90% 5%, var(--color-accent-2-soft), transparent),
+    var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+}
+
+pre,
+code {
+  font-family: var(--font-mono);
+}
+
+/* Warna saat teks diblok/diseleksi */
+::selection {
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+}
+
+/* Garis fokus saat navigasi dengan keyboard (tombol Tab) */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+
+/* ----------------------------------------------------------------
+   3. KOMPONEN UMUM
+   ---------------------------------------------------------------- */
+
+/* Pembungkus konten: lebar maksimal + posisi di tengah */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;        /* kiri-kanan otomatis = posisi di tengah */
+  padding-inline: 1.25rem;    /* jarak dari tepi layar */
+}
+
+/* Jarak atas-bawah untuk setiap bagian halaman */
+.section {
+  padding-block: 4rem;
+}
+
+.section-header {
+  margin-bottom: 2.5rem;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);   /* clamp(minimal, ideal, maksimal) */
+  font-weight: 800;
+}
+
+/* Garis kecil bergradien di bawah judul */
+.section-title::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin-top: 0.75rem;
+  border-radius: 999px;
+  background: var(--gradient);
+}
+
+.section-subtitle {
+  max-width: 60ch;            /* ch = lebar 1 karakter */
+  margin-top: 1rem;
+  color: var(--color-text-muted);
+}
+
+/* Teks dengan warna gradien */
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;      /* gradien hanya terlihat di dalam huruf */
+  color: transparent;
+}
+
+/* Tombol */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;       /* angka besar = bentuk kapsul */
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);   /* sedikit terangkat saat disorot */
+}
+
+.btn-primary {
+  color: var(--color-bg);
+  background: var(--gradient);
+  box-shadow: 0 10px 30px -10px var(--color-glow);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 14px 34px -8px var(--color-glow);
+}
+
+.btn-secondary {
+  border: 1px solid var(--color-border);
+  background-color: rgba(148, 163, 184, 0.06);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(148, 163, 184, 0.14);
+}
+
+/* Ikon di dalam tombol */
+.icon {
+  flex-shrink: 0;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+/* Kartu: kotak dengan latar sedikit lebih terang */
+.card {
+  padding: 1.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+}
+
+/* Label kecil berbentuk kapsul (untuk teknologi/skill) */
+.tags {
+  display: flex;
+  flex-wrap: wrap;            /* pindah ke baris baru jika tidak muat */
+  gap: 0.5rem;
+}
+
+.tags li {
+  padding: 0.3rem 0.85rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+}
+
+/* Versi redup untuk hal yang belum dipelajari */
+.tags-muted li {
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+  background-color: transparent;
+}
+
+/* Layar ≥ 640px (tablet & laptop): jarak tepi sedikit lebih lebar */
+@media (min-width: 640px) {
+  .container {
+    padding-inline: 2rem;
+  }
+
+  .section {
+    padding-block: 5rem;
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   4. HEADER & NAVIGASI
+   ---------------------------------------------------------------- */
+.header {
+  position: sticky;           /* menempel di atas saat halaman di-scroll */
+  top: 0;
+  z-index: 100;               /* selalu tampil di atas elemen lain */
+  border-bottom: 1px solid var(--color-border);
+  background-color: rgba(11, 17, 32, 0.75);   /* --color-bg versi transparan */
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);                /* efek kaca buram */
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;   /* logo di kiri, menu di kanan */
+  gap: 0.5rem 1.5rem;
+  min-height: var(--header-height);
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.logo span {
+  color: var(--color-accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--color-text);
+}
+
+@media (min-width: 640px) {
+  .logo {
+    font-size: 1.35rem;
+  }
+
+  .nav-links {
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   5. BERANDA (HERO)
+   ---------------------------------------------------------------- */
+.hero {
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+  padding-block: 3.5rem 4rem;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  background-color: rgba(148, 163, 184, 0.06);
+}
+
+/* Titik hijau yang "berdenyut" */
+.status-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-success);
+}
+
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;                   /* menutupi titik aslinya persis */
+  border-radius: 50%;
+  background-color: var(--color-success);
+  animation: pulse 2s ease-out infinite;
+}
+
+.hero h1 {
+  font-size: clamp(2.25rem, 7vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.hero-role {
+  margin-top: 1rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 600;
+}
+
+.hero-desc {
+  max-width: 52ch;
+  margin-top: 1rem;
+  color: var(--color-text-muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Hiasan jendela kode */
+.code-window {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.7);
+}
+
+.code-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot-red    { background-color: #f87171; }
+.dot-yellow { background-color: #fbbf24; }
+.dot-green  { background-color: #4ade80; }
+
+.code-window-title {
+  margin-left: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.code-window pre {
+  overflow-x: auto;           /* bisa digeser jika barisnya terlalu panjang */
+  padding: 1.5rem;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+/* Warna-warni kode, seperti di code editor */
+.code-keyword { color: #c084fc; }
+.code-prop    { color: #7dd3fc; }
+.code-string  { color: #86efac; }
+.code-number  { color: #fdba74; }
+
+/* Layar ≥ 900px: teks di kiri, jendela kode di kanan */
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: 1.15fr 1fr;
+    gap: 4rem;
+    padding-block: 6rem 5rem;
+  }
+
+  .code-window pre {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   6. TENTANG SAYA
+   ---------------------------------------------------------------- */
+.about {
+  display: grid;
+  gap: 2rem;
+}
+
+.about-text {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+}
+
+.about-text p + p {
+  margin-top: 1rem;           /* jarak antar paragraf */
+}
+
+.about-text strong {
+  color: var(--color-text);
+}
+
+.about-skills h3 {
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.about-skills .tags + h3 {
+  margin-top: 1.5rem;
+}
+
+/* Layar ≥ 768px: teks dan kartu skill berdampingan */
+@media (min-width: 768px) {
+  .about {
+    grid-template-columns: 1.4fr 1fr;
+    align-items: start;
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   7. PERJALANAN BELAJAR (timeline)
+   ---------------------------------------------------------------- */
+.timeline {
+  display: grid;
+  gap: 2rem;
+  max-width: 720px;
+  margin-left: 7px;                             /* ruang untuk titik */
+  border-left: 2px solid var(--color-border);   /* garis vertikal */
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 2rem;
+}
+
+/* Titik bulat di garis untuk setiap tahap */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 0.3rem;
+  left: -8px;                 /* (lebar titik 14px + garis 2px) / 2 */
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-text-muted);
+  border-radius: 50%;
+  background-color: var(--color-bg);
+}
+
+.timeline-item h3 {
+  display: flex;
+  flex-wrap: wrap;            /* label status turun ke baris baru jika tidak muat */
+  align-items: center;
+  gap: 0.25rem 0.6rem;
+  font-size: 1.1rem;
+  color: var(--color-text-muted);   /* tahap yang belum dimulai: redup */
+}
+
+.timeline-item p {
+  margin-top: 0.35rem;
+  color: var(--color-text-muted);
+}
+
+/* Tahap yang sedang berjalan */
+.timeline-item.is-current::before {
+  border-color: transparent;
+  background: var(--gradient);
+  box-shadow: 0 0 0 6px var(--color-accent-soft);   /* lingkaran cahaya */
+}
+
+/* Tahap yang sudah selesai */
+.timeline-item.is-done::before {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+}
+
+.timeline-item.is-current h3,
+.timeline-item.is-done h3 {
+  color: var(--color-text);
+}
+
+/* Label status di samping judul tahap */
+.timeline-status {
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-bg);
+  background: var(--gradient);
+}
+
+.timeline-item.is-done .timeline-status {
+  color: var(--color-success);
+  background: var(--color-success-soft);
+}
+
+/* Layar ≥ 900px: judul di kiri, timeline di kanan */
+@media (min-width: 900px) {
+  .journey {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    align-items: start;
+    gap: 4rem;
+  }
+}
+
+
+/* ----------------------------------------------------------------
+   8. PROYEK
+   ---------------------------------------------------------------- */
+
+/* Grid otomatis: jumlah kolom menyesuaikan lebar layar
+   (setiap kartu minimal 280px, sisa ruang dibagi rata) */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-accent);
+  box-shadow: 0 20px 40px -20px var(--color-glow);
+}
+
+/* Area gambar/ikon proyek */
+.project-thumb {
+  display: grid;
+  place-items: center;        /* ikon tepat di tengah */
+  aspect-ratio: 16 / 9;       /* perbandingan lebar : tinggi */
+  border-bottom: 1px solid var(--color-border);
+  font-size: 3.5rem;
+  background:
+    radial-gradient(circle at 25% 20%, var(--color-accent-soft), transparent 60%),
+    radial-gradient(circle at 80% 85%, var(--color-accent-2-soft), transparent 60%),
+    var(--color-bg);
+}
+
+.project-body {
+  display: flex;
+  flex: 1;                    /* isi kartu mengisi sisa tinggi kartu */
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.5rem;
+}
+
+.project-body h3 {
+  font-size: 1.2rem;
+}
+
+.project-body p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.project-link {
+  margin-top: auto;           /* dorong link ke bagian bawah kartu */
+  padding-top: 0.5rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
+/* Label status proyek */
+.badge {
+  padding: 0.2rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.badge-live {
+  border-color: transparent;
+  color: var(--color-success);
+  background-color: var(--color-success-soft);
+}
+
+/* Kartu proyek yang belum jadi ("Segera Hadir") */
+.project-card.is-soon {
+  border-style: dashed;
+}
+
+.project-card.is-soon .project-thumb {
+  opacity: 0.5;
+  filter: grayscale(0.8);
+}
+
+.project-card.is-soon:hover {
+  transform: none;
+  border-color: var(--color-border);
+  box-shadow: none;
+}
+
+
+/* ----------------------------------------------------------------
+   9. KONTAK
+   ---------------------------------------------------------------- */
+.contact {
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, var(--color-accent-soft), transparent 70%),
+    var(--color-surface);
+}
+
+.contact h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+}
+
+.contact p {
+  max-width: 46ch;
+  margin: 1rem auto 2rem;     /* auto kiri-kanan = di tengah */
+  color: var(--color-text-muted);
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+
+/* ----------------------------------------------------------------
+   10. FOOTER
+   ---------------------------------------------------------------- */
+.footer {
+  padding-block: 2rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footer a:hover {
+  color: var(--color-text);
+}
+
+
+/* ----------------------------------------------------------------
+   11. ANIMASI
+   ---------------------------------------------------------------- */
+
+/* Muncul perlahan dari bawah */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Melayang naik-turun */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Denyut titik status */
+@keyframes pulse {
+  from {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(3);
+  }
+}
+
+/* Isi hero muncul satu per satu (delay = jeda sebelum mulai) */
+.hero-text > * {
+  animation: fade-up 0.7s ease both;
+}
+
+.hero-text > :nth-child(2) { animation-delay: 0.1s; }
+.hero-text > :nth-child(3) { animation-delay: 0.2s; }
+.hero-text > :nth-child(4) { animation-delay: 0.3s; }
+.hero-text > :nth-child(5) { animation-delay: 0.4s; }
+
+/* Jendela kode: muncul, lalu melayang pelan terus-menerus */
+.code-window {
+  animation:
+    fade-up 0.8s 0.3s ease both,
+    float 6s 1.1s ease-in-out infinite;
+}
+
+/* Hormati pengaturan "kurangi animasi" di HP/komputer pengunjung */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <!--
+    Bagian <head> berisi informasi untuk browser dan mesin pencari.
+    Isinya tidak tampil langsung di halaman.
+  -->
+  <meta charset="UTF-8">
+  <!-- Supaya tampilan menyesuaikan lebar layar (penting untuk HP) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Darmawan Chandra | Portofolio</title>
+  <!-- Deskripsi singkat yang muncul di hasil pencarian Google -->
+  <meta name="description" content="Portofolio Darmawan Chandra, web developer pemula yang sedang belajar membangun website dari nol.">
+
+  <!-- Judul & deskripsi saat link dibagikan di WhatsApp, LinkedIn, dll. -->
+  <meta property="og:title" content="Darmawan Chandra | Portofolio">
+  <meta property="og:description" content="Kumpulan proyek yang saya buat selama belajar web development.">
+  <meta property="og:type" content="website">
+
+  <!-- Warna bilah browser di HP -->
+  <meta name="theme-color" content="#0b1120">
+
+  <!-- Ikon kecil di tab browser -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- Font "Plus Jakarta Sans" dari Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
+  <!-- File CSS kita sendiri: semua pengaturan tampilan ada di sini -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER: logo + menu navigasi (menempel di atas saat di-scroll)
+       ============================================================ -->
+  <header class="header">
+    <nav class="nav container" aria-label="Navigasi utama">
+      <a href="#beranda" class="logo">Darmawan<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#proyek">Proyek</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ==========================================================
+         1. BERANDA (hero): kesan pertama untuk pengunjung
+         ========================================================== -->
+    <section id="beranda" class="hero container">
+      <div class="hero-text">
+        <p class="status-badge">
+          <span class="status-dot"></span>
+          Sedang belajar &amp; membangun
+        </p>
+        <h1>
+          Halo, saya<br>
+          <span class="gradient-text">Darmawan Chandra</span>
+        </h1>
+        <p class="hero-role">Web Developer Pemula</p>
+        <p class="hero-desc">
+          Saya sedang belajar membangun website dari nol. Di sini saya
+          mengumpulkan semua proyek yang saya buat selama belajar, dari yang
+          sederhana sampai yang menantang.
+        </p>
+        <div class="hero-actions">
+          <a href="#proyek" class="btn btn-primary">Lihat Proyek</a>
+          <a href="#kontak" class="btn btn-secondary">Hubungi Saya</a>
+        </div>
+      </div>
+
+      <!--
+        Hiasan berbentuk jendela kode.
+        aria-hidden="true" = dilewati pembaca layar, karena hanya hiasan.
+        Catatan: <pre> menampilkan spasi apa adanya, jadi baris kode
+        di dalamnya sengaja ditulis tanpa indentasi tambahan.
+      -->
+      <div class="code-window" aria-hidden="true">
+        <div class="code-window-bar">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+          <span class="code-window-title">tentang-saya.js</span>
+        </div>
+<pre><code><span class="code-keyword">const</span> darmawan = {
+  <span class="code-prop">peran</span>: <span class="code-string">"Web Developer Pemula"</span>,
+  <span class="code-prop">belajar</span>: [<span class="code-string">"HTML"</span>, <span class="code-string">"CSS"</span>],
+  <span class="code-prop">berikutnya</span>: <span class="code-string">"JavaScript"</span>,
+  <span class="code-prop">semangat</span>: <span class="code-number">Infinity</span>,
+};</code></pre>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         2. TENTANG SAYA
+         ========================================================== -->
+    <section id="tentang" class="section container">
+      <div class="section-header">
+        <h2 class="section-title">Tentang Saya</h2>
+      </div>
+
+      <div class="about">
+        <div class="about-text">
+          <p>
+            Halo! Saya Darmawan, pemula yang sedang serius belajar
+            <strong>web development</strong>. Saya percaya cara terbaik untuk
+            belajar adalah <strong>langsung membuat sesuatu</strong>, jadi setiap
+            materi yang saya pelajari saya ubah menjadi proyek nyata yang
+            bisa dipakai.
+          </p>
+          <p>
+            Website ini adalah rumah untuk semua proyek tersebut. Isinya akan
+            terus bertambah seiring kemampuan saya berkembang.
+          </p>
+        </div>
+
+        <div class="about-skills card">
+          <h3>Sedang dipelajari</h3>
+          <ul class="tags">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Desain Responsif</li>
+            <li>Git &amp; GitHub</li>
+          </ul>
+
+          <h3>Berikutnya</h3>
+          <ul class="tags tags-muted">
+            <li>JavaScript</li>
+            <li>React</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         3. PERJALANAN BELAJAR
+         Cara memperbarui saat satu tahap selesai:
+         - Tahap yang selesai   → class "is-done" + label "Selesai"
+         - Tahap yang berjalan  → class "is-current" + label "Sedang berjalan"
+         ========================================================== -->
+    <section id="perjalanan" class="section container">
+      <div class="journey">
+        <div class="section-header">
+          <h2 class="section-title">Perjalanan Belajar</h2>
+          <p class="section-subtitle">Peta belajar saya, dari dasar sampai fullstack.</p>
+        </div>
+
+        <ol class="timeline">
+          <li class="timeline-item is-current">
+            <h3>Tahap 1 · Fondasi <span class="timeline-status">Sedang berjalan</span></h3>
+            <p>HTML, CSS, dan desain responsif. Hasil pertamanya: website ini.</p>
+          </li>
+          <li class="timeline-item">
+            <h3>Tahap 2 · Mulai Interaktif</h3>
+            <p>Dasar JavaScript lewat proyek To-Do List dan kalkulator.</p>
+          </li>
+          <li class="timeline-item">
+            <h3>Tahap 3 · Data &amp; API</h3>
+            <p>JavaScript lanjutan dan API: aplikasi cuaca dan pencatat keuangan.</p>
+          </li>
+          <li class="timeline-item">
+            <h3>Tahap 4 · Naik Level</h3>
+            <p>Membangun ulang website ini dengan React atau Next.js.</p>
+          </li>
+          <li class="timeline-item">
+            <h3>Tahap 5 · Fullstack</h3>
+            <p>Database dan sistem login untuk proyek yang lebih besar.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         4. PROYEK
+         Setiap proyek = satu <article class="project-card">.
+         Proyek baru? Salin satu kartu, lalu ubah isinya.
+         Kode setiap proyek nanti disimpan di folder proyek/nama-proyek/
+         ========================================================== -->
+    <section id="proyek" class="section container">
+      <div class="section-header">
+        <h2 class="section-title">Proyek Saya</h2>
+        <p class="section-subtitle">
+          Kumpulan proyek yang saya buat selama belajar. Daftarnya akan terus bertambah!
+        </p>
+      </div>
+
+      <div class="project-grid">
+
+        <!-- Proyek 1: website ini sendiri -->
+        <article class="project-card">
+          <!-- Nanti emoji ini bisa diganti dengan screenshot proyek -->
+          <div class="project-thumb" aria-hidden="true">🌐</div>
+          <div class="project-body">
+            <span class="badge badge-live">Live</span>
+            <h3>Website Portofolio</h3>
+            <p>
+              Website yang sedang kamu lihat ini. Dibuat dari nol dengan HTML
+              dan CSS, dan nyaman dibuka di HP maupun laptop.
+            </p>
+            <ul class="tags">
+              <li>HTML</li>
+              <li>CSS</li>
+            </ul>
+            <a class="project-link" href="https://github.com/DarmawanChandra/belajar-buat-web" target="_blank" rel="noopener">Lihat Kode →</a>
+          </div>
+        </article>
+
+        <!-- Proyek 2: segera hadir (Tahap 2) -->
+        <article class="project-card is-soon">
+          <div class="project-thumb" aria-hidden="true">✅</div>
+          <div class="project-body">
+            <span class="badge">Segera Hadir</span>
+            <h3>To-Do List</h3>
+            <p>
+              Aplikasi daftar tugas: tambah, centang, dan hapus tugas. Datanya
+              tetap tersimpan walau browser ditutup.
+            </p>
+            <ul class="tags">
+              <li>JavaScript</li>
+              <li>LocalStorage</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Proyek 3: segera hadir (Tahap 3) -->
+        <article class="project-card is-soon">
+          <div class="project-thumb" aria-hidden="true">💰</div>
+          <div class="project-body">
+            <span class="badge">Segera Hadir</span>
+            <h3>Pencatat Keuangan</h3>
+            <p>
+              Catat pemasukan dan pengeluaran harian, lalu lihat ringkasannya
+              dalam bentuk grafik.
+            </p>
+            <ul class="tags">
+              <li>JavaScript</li>
+              <li>Grafik</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         5. KONTAK
+         ========================================================== -->
+    <section id="kontak" class="section container">
+      <div class="contact card">
+        <h2>Mari Terhubung</h2>
+        <p>
+          Punya pertanyaan, masukan, atau ide kolaborasi?
+          Jangan ragu untuk menghubungi saya.
+        </p>
+        <div class="contact-links">
+          <a class="btn btn-primary" href="https://github.com/DarmawanChandra" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true">
+              <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            GitHub
+          </a>
+
+          <!-- Tips: mau menambah Email, LinkedIn, atau Instagram?
+               Hapus baris pembuka dan penutup komentar di bawah ini,
+               lalu ganti alamatnya dengan milikmu. -->
+          <!--
+          <a class="btn btn-secondary" href="mailto:namakamu@example.com">Email</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/username-kamu" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-secondary" href="https://www.instagram.com/username-kamu" target="_blank" rel="noopener">Instagram</a>
+          -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© 2026 Darmawan Chandra · Dibuat dengan HTML &amp; CSS</p>
+      <a href="#beranda">Kembali ke atas ↑</a>
+    </div>
+  </footer>
+
+</body>
+</html>
