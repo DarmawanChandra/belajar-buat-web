@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papan Skor Olahraga | Darmawan Chandra</title>
+  <meta name="description" content="Papan skor untuk berbagai olahraga: badminton, tenis meja, voli, dan basket. Dibuat dengan JavaScript.">
+  <meta name="theme-color" content="#ECF0F1">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="app">
+
+    <header class="app-header">
+      <a href="../../index.html" class="back-link">&larr; Kembali ke Portofolio</a>
+      <h1>Papan Skor</h1>
+      <p class="app-subtitle">Pilih olahraga, lalu tekan tombol untuk menambah poin. Pemenang dihitung otomatis sesuai aturan tiap olahraga.</p>
+    </header>
+
+    <!--
+      Pilihan olahraga. JavaScript membaca nilai yang dipilih,
+      lalu memakai aturan yang sesuai.
+    -->
+    <div class="pilih-olahraga">
+      <label for="olahraga">Olahraga</label>
+      <select id="olahraga">
+        <option value="badminton">Badminton</option>
+        <option value="tenis-meja">Tenis Meja</option>
+        <option value="voli">Bola Voli</option>
+        <option value="basket">Bola Basket</option>
+      </select>
+      <!-- Keterangan aturan olahraga yang sedang dipilih -->
+      <p id="keterangan-aturan" class="keterangan-aturan"></p>
+    </div>
+
+    <!-- Papan skor: dua sisi pemain -->
+    <section class="papan">
+
+      <!-- ===== Pemain 1 ===== -->
+      <article class="sisi" data-pemain="1">
+        <!-- Nama bisa diedit langsung (contenteditable) -->
+        <h2 class="nama-pemain" contenteditable="true" spellcheck="false">Pemain 1</h2>
+
+        <!-- Jumlah game yang dimenangkan (titik-titik) -->
+        <div class="game-menang" id="game-1" aria-label="Game dimenangkan Pemain 1"></div>
+
+        <!-- Skor besar -->
+        <div class="skor" id="skor-1">0</div>
+
+        <!-- Tombol tambah / kurang -->
+        <div class="tombol-skor">
+          <button type="button" class="btn-poin btn-tambah" data-aksi="tambah" data-pemain="1">+1</button>
+          <button type="button" class="btn-poin btn-kurang" data-aksi="kurang" data-pemain="1" aria-label="Kurangi poin Pemain 1">&minus;</button>
+        </div>
+      </article>
+
+      <!-- ===== Pemain 2 ===== -->
+      <article class="sisi" data-pemain="2">
+        <h2 class="nama-pemain" contenteditable="true" spellcheck="false">Pemain 2</h2>
+        <div class="game-menang" id="game-2" aria-label="Game dimenangkan Pemain 2"></div>
+        <div class="skor" id="skor-2">0</div>
+        <div class="tombol-skor">
+          <button type="button" class="btn-poin btn-tambah" data-aksi="tambah" data-pemain="2">+1</button>
+          <button type="button" class="btn-poin btn-kurang" data-aksi="kurang" data-pemain="2" aria-label="Kurangi poin Pemain 2">&minus;</button>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Pengumuman pemenang (muncul saat ada yang menang) -->
+    <p id="pengumuman" class="pengumuman sembunyi"></p>
+
+    <!-- Tombol aksi bawah -->
+    <div class="aksi-bawah">
+      <button type="button" id="btn-reset" class="btn-reset">Mulai Ulang</button>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
