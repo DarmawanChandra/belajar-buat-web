@@ -27,19 +27,19 @@
    (contoh: 56, 189, 248 adalah kode RGB dari #38bdf8).
    ---------------------------------------------------------------- */
 :root {
-  --color-bg: #0b1120;                          /* latar belakang utama */
-  --color-surface: #111a2e;                     /* latar kartu */
-  --color-border: rgba(148, 163, 184, 0.16);    /* garis tepi tipis */
-  --color-text: #e2e8f0;                        /* teks utama */
-  --color-text-muted: #94a3b8;                  /* teks pendukung (lebih redup) */
+  --color-bg: #ECF0F1;                          /* latar belakang utama (putih keabuan) */
+  --color-surface: #ffffff;                     /* latar kartu (putih) */
+  --color-border: rgba(44, 62, 80, 0.16);       /* garis tepi tipis */
+  --color-text: #2C3E50;                        /* teks utama (biru tua gelap) */
+  --color-text-muted: #7F8C8D;                  /* teks pendukung (abu) */
 
-  --color-accent: #38bdf8;                      /* aksen 1: biru langit */
-  --color-accent-soft: rgba(56, 189, 248, 0.15);
-  --color-accent-2: #a78bfa;                    /* aksen 2: ungu */
-  --color-accent-2-soft: rgba(167, 139, 250, 0.15);
-  --color-glow: rgba(56, 189, 248, 0.45);       /* bayangan bercahaya */
-  --color-success: #4ade80;                     /* hijau untuk status */
-  --color-success-soft: rgba(74, 222, 128, 0.15);
+  --color-accent: #34495E;                      /* aksen 1: biru abu gelap */
+  --color-accent-soft: rgba(52, 73, 94, 0.12);
+  --color-accent-2: #2C3E50;                    /* aksen 2: biru tua gelap */
+  --color-accent-2-soft: rgba(44, 62, 80, 0.12);
+  --color-glow: rgba(44, 62, 80, 0.30);         /* bayangan lembut */
+  --color-success: #5a8f73;                     /* hijau untuk status */
+  --color-success-soft: rgba(188, 211, 199, 0.55);
 
   --gradient: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
 
@@ -111,7 +111,7 @@ code {
 
 /* Warna saat teks diblok/diseleksi */
 ::selection {
-  color: var(--color-bg);
+  color: #ffffff;
   background-color: var(--color-accent);
 }
 
@@ -189,7 +189,7 @@ code {
 }
 
 .btn-primary {
-  color: var(--color-bg);
+  color: #ffffff;
   background: var(--gradient);
   box-shadow: 0 10px 30px -10px var(--color-glow);
 }
@@ -559,7 +559,7 @@ code {
   border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--color-bg);
+  color: #ffffff;
   background: var(--gradient);
 }
 

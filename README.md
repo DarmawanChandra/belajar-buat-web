@@ -1,4 +1,4 @@
-# Belajar Buat Web 🚀
+# Belajar Buat Web
 
 Website portofolio pribadi saya, sekaligus tempat mengumpulkan semua proyek yang saya buat selama belajar web development.
 
