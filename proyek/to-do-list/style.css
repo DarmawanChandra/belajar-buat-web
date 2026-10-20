@@ -1,0 +1,179 @@
+/* ================================================================
+   style.css — tampilan aplikasi To-Do List
+   Memakai palet warna yang sama dengan portofolio.
+   ================================================================ */
+
+:root {
+  --color-bg: #ECF0F1;            /* latar belakang */
+  --color-surface: #ffffff;      /* latar kartu/baris */
+  --color-border: rgba(44, 62, 80, 0.16);
+  --color-text: #2C3E50;         /* teks utama */
+  --color-text-muted: #7F8C8D;   /* teks pendukung */
+  --color-accent: #34495E;       /* warna tombol */
+  --color-accent-soft: #BCD3C7;  /* sentuhan hijau lembut */
+  --radius: 14px;
+}
+
+/* Dasar */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1.25rem;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* Kotak aplikasi di tengah layar */
+.app {
+  width: 100%;
+  max-width: 560px;
+}
+
+/* ---------- Judul ---------- */
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+.back-link:hover {
+  color: var(--color-text);
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.app-subtitle {
+  margin-top: 0.5rem;
+  margin-bottom: 1.75rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Form tambah tugas ---------- */
+.form-tugas {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.input-tugas {
+  flex: 1;                        /* isi mengisi sisa lebar */
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.input-tugas:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.btn-tambah {
+  padding: 0.8rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #ffffff;
+  background-color: var(--color-accent);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.btn-tambah:hover {
+  opacity: 0.88;
+}
+
+/* ---------- Info jumlah ---------- */
+.info-tugas {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Daftar tugas ---------- */
+.daftar-tugas {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Satu baris tugas */
+.item-tugas {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+/* Kotak centang */
+.item-tugas input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex-shrink: 0;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+/* Teks tugas */
+.teks-tugas {
+  flex: 1;
+  word-break: break-word;        /* tugas panjang turun baris, tidak melebar */
+}
+
+/* Tugas yang sudah selesai: dicoret dan diredupkan */
+.item-tugas.selesai .teks-tugas {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+/* Tombol hapus (ikon silang) */
+.btn-hapus {
+  flex-shrink: 0;
+  width: 1.9rem;
+  height: 1.9rem;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.btn-hapus:hover {
+  color: #c0392b;                /* merah saat disorot */
+  border-color: #c0392b;
+}
+
+/* ---------- Pesan saat kosong ---------- */
+.pesan-kosong {
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+/* Sembunyikan elemen (dipakai JavaScript lewat class "sembunyi") */
+.sembunyi {
+  display: none;
+}

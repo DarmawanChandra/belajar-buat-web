@@ -51,6 +51,32 @@
   --header-height: 72px;
 }
 
+/* ----------------------------------------------------------------
+   TEMA GELAP
+   Aktif saat <html> punya atribut data-tema="gelap" (diatur oleh
+   tombol di header). Cukup menimpa beberapa variabel warna — semua
+   komponen lain otomatis ikut berubah karena memakai variabel ini.
+   ---------------------------------------------------------------- */
+html[data-tema="gelap"] {
+  --color-bg: #2C3E50;                          /* latar gelap */
+  --color-surface: #34495E;                     /* latar kartu */
+  --color-border: rgba(236, 240, 241, 0.16);
+  --color-text: #ECF0F1;                        /* teks terang */
+  --color-text-muted: #BCD3C7;                  /* teks pendukung */
+
+  --color-accent: #BCD3C7;                      /* aksen jadi terang */
+  --color-accent-soft: rgba(188, 211, 199, 0.15);
+  --color-accent-2: #7F8C8D;
+  --color-accent-2-soft: rgba(127, 140, 141, 0.18);
+  --color-glow: rgba(0, 0, 0, 0.45);
+}
+
+/* Di tema gelap, teks di atas tombol aksen (yang terang) harus gelap */
+html[data-tema="gelap"] .btn-primary,
+html[data-tema="gelap"] .timeline-status {
+  color: #2C3E50;
+}
+
 
 /* ----------------------------------------------------------------
    2. DASAR
@@ -304,6 +330,24 @@ code {
 
 .nav-links a:hover {
   color: var(--color-text);
+}
+
+/* Tombol ganti tema di header */
+.toggle-tema {
+  padding: 0.35rem 0.9rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.toggle-tema:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-muted);
 }
 
 @media (min-width: 640px) {
