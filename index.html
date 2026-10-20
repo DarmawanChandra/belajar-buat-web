@@ -80,11 +80,21 @@
       </div>
 
       <!--
-        Gambar hiasan di beranda.
-        loading="lazy" = gambar dimuat saat dibutuhkan (lebih ringan).
+        Hiasan jendela kode di beranda.
+        aria-hidden="true" = disembunyikan dari pembaca layar (hanya hiasan).
       -->
-      <div class="hero-image" aria-hidden="true">
-        <img src="gambar/hero.jpg" alt="Patung krom 3D bergaya futuristik" loading="lazy" width="2912" height="1636">
+      <div class="code-window" aria-hidden="true">
+        <div class="code-window-bar">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <pre class="code-window-body"><code>const developer = {
+  nama: "Darmawan Chandra",
+  peran: "Web Developer",
+  belajar: ["HTML", "CSS", "JavaScript"],
+  semangat: true,
+};</code></pre>
       </div>
     </section>
 
