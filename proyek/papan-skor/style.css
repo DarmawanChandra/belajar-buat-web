@@ -1,0 +1,221 @@
+/* ================================================================
+   style.css — tampilan Papan Skor Olahraga
+   Memakai palet warna yang sama dengan portofolio.
+   ================================================================ */
+
+:root {
+  --color-bg: #ECF0F1;
+  --color-surface: #ffffff;
+  --color-border: rgba(44, 62, 80, 0.16);
+  --color-text: #2C3E50;
+  --color-text-muted: #7F8C8D;
+  --color-accent: #34495E;
+  --color-accent-soft: #BCD3C7;
+  --color-menang: #2C3E50;
+  --radius: 16px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  padding: 2rem 1.25rem;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+.app {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* ---------- Judul ---------- */
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+.back-link:hover { color: var(--color-text); }
+
+.app-header h1 { font-size: 2rem; font-weight: 800; }
+.app-subtitle {
+  margin-top: 0.5rem;
+  margin-bottom: 1.75rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Pilih olahraga ---------- */
+.pilih-olahraga {
+  margin-bottom: 1.75rem;
+}
+.pilih-olahraga label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+#olahraga {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.keterangan-aturan {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Papan skor ---------- */
+.papan {
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* dua sisi berdampingan */
+  gap: 1rem;
+}
+
+.sisi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: border-color 0.25s ease;
+}
+
+/* Sisi pemenang diberi bingkai mencolok */
+.sisi.menang {
+  border-color: var(--color-menang);
+}
+
+.nama-pemain {
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.1rem 0.4rem;
+  border-radius: 6px;
+  outline: none;
+}
+/* Garis bantu saat nama sedang diedit */
+.nama-pemain:focus {
+  background-color: var(--color-accent-soft);
+}
+
+/* Titik-titik game yang dimenangkan */
+.game-menang {
+  display: flex;
+  gap: 0.35rem;
+  min-height: 12px;
+}
+.game-menang span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+}
+
+/* Skor besar */
+.skor {
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;  /* angka tidak geser saat berubah */
+}
+
+/* Tombol + / - */
+.tombol-skor {
+  display: flex;
+  gap: 0.6rem;
+  width: 100%;
+  justify-content: center;
+}
+.btn-poin {
+  font-family: inherit;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+.btn-poin:active { transform: scale(0.95); }
+.btn-poin:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-tambah {
+  flex: 1;
+  max-width: 130px;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  color: #ffffff;
+  background-color: var(--color-accent);
+}
+.btn-tambah:hover:not(:disabled) { opacity: 0.88; }
+
+.btn-kurang {
+  width: 48px;
+  font-size: 1.3rem;
+  color: var(--color-text-muted);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+}
+.btn-kurang:hover:not(:disabled) { color: var(--color-text); }
+
+/* ---------- Pengumuman pemenang ---------- */
+.pengumuman {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: var(--color-menang);
+  border-radius: var(--radius);
+}
+
+/* ---------- Tombol bawah ---------- */
+.aksi-bawah {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+.btn-reset {
+  padding: 0.7rem 1.6rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+.btn-reset:hover { border-color: var(--color-text-muted); }
+
+/* Kelas bantu */
+.sembunyi { display: none; }
+
+/* Layar kecil (HP): sisi pemain ditumpuk ke bawah */
+@media (max-width: 520px) {
+  .papan { grid-template-columns: 1fr; }
+  .skor { font-size: 3.5rem; }
+}
