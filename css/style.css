@@ -388,6 +388,20 @@ code {
   margin-top: 2rem;
 }
 
+/* Gambar hiasan di beranda */
+.hero-image {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: #11161f;          /* latar gelap, serasi dengan gambar hitam */
+  box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.55);
+}
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Hiasan jendela kode */
 .code-window {
   overflow: hidden;
@@ -783,8 +797,8 @@ code {
 .hero-text > :nth-child(4) { animation-delay: 0.3s; }
 .hero-text > :nth-child(5) { animation-delay: 0.4s; }
 
-/* Jendela kode: muncul, lalu melayang pelan terus-menerus */
-.code-window {
+/* Gambar beranda: muncul, lalu melayang pelan terus-menerus */
+.hero-image {
   animation:
     fade-up 0.8s 0.3s ease both,
     float 6s 1.1s ease-in-out infinite;
