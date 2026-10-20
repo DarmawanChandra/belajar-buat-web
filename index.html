@@ -44,6 +44,10 @@
         <li><a href="#tentang">Tentang</a></li>
         <li><a href="#proyek">Proyek</a></li>
         <li><a href="#kontak">Kontak</a></li>
+        <li>
+          <!-- Tombol ganti tema terang/gelap. Teksnya diisi oleh JavaScript. -->
+          <button type="button" id="toggle-tema" class="toggle-tema" aria-label="Ganti tema terang/gelap">Gelap</button>
+        </li>
       </ul>
     </nav>
   </header>
@@ -211,11 +215,11 @@
           </div>
         </article>
 
-        <!-- Proyek 2: segera hadir (Tahap 2) -->
-        <article class="project-card is-soon">
+        <!-- Proyek 2: To-Do List (Tahap 2) -->
+        <article class="project-card">
           <div class="project-thumb" aria-hidden="true">To-Do</div>
           <div class="project-body">
-            <span class="badge">Segera Hadir</span>
+            <span class="badge badge-live">Live</span>
             <h3>To-Do List</h3>
             <p>
               Aplikasi daftar tugas: tambah, centang, dan hapus tugas. Datanya
@@ -225,6 +229,7 @@
               <li>JavaScript</li>
               <li>LocalStorage</li>
             </ul>
+            <a class="project-link" href="proyek/to-do-list/index.html">Buka Aplikasi &rarr;</a>
           </div>
         </article>
 
@@ -289,6 +294,40 @@
       <a href="#beranda">Kembali ke atas ↑</a>
     </div>
   </footer>
+
+  <!-- ============================================================
+       JavaScript: tombol ganti tema terang/gelap
+       Cara kerja:
+       - Tema gelap aktif saat <html> punya atribut data-tema="gelap".
+         (warna gelapnya diatur di style.css pada aturan [data-tema="gelap"])
+       - Pilihan tema disimpan di localStorage, jadi tetap teringat
+         saat halaman dibuka lagi.
+       ============================================================ -->
+  <script>
+    const tombolTema = document.getElementById("toggle-tema");
+    const akar = document.documentElement; // elemen <html>
+
+    // Terapkan tema dan perbarui teks tombol.
+    function terapkanTema(tema) {
+      if (tema === "gelap") {
+        akar.setAttribute("data-tema", "gelap");
+        tombolTema.textContent = "Terang";
+      } else {
+        akar.removeAttribute("data-tema");
+        tombolTema.textContent = "Gelap";
+      }
+    }
+
+    // Saat halaman dibuka: pakai tema yang tersimpan (kalau ada).
+    terapkanTema(localStorage.getItem("tema") || "terang");
+
+    // Saat tombol diklik: balik tema, simpan pilihannya.
+    tombolTema.addEventListener("click", () => {
+      const temaBaru = akar.getAttribute("data-tema") === "gelap" ? "terang" : "gelap";
+      localStorage.setItem("tema", temaBaru);
+      terapkanTema(temaBaru);
+    });
+  </script>
 
 </body>
 </html>

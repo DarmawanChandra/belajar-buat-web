@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List | Darmawan Chandra</title>
+  <meta name="description" content="Aplikasi daftar tugas sederhana: tambah, centang, dan hapus tugas. Dibuat dengan JavaScript.">
+  <meta name="theme-color" content="#ECF0F1">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+
+  <!-- Font sama seperti halaman utama -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
+  <!-- CSS khusus untuk proyek ini -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="app">
+
+    <!-- Judul aplikasi -->
+    <header class="app-header">
+      <a href="../../index.html" class="back-link">&larr; Kembali ke Portofolio</a>
+      <h1>Daftar Tugas</h1>
+      <p class="app-subtitle">Tambah tugas, centang kalau sudah selesai, hapus kalau tidak perlu. Datanya tersimpan walau browser ditutup.</p>
+    </header>
+
+    <!--
+      FORM: tempat menambah tugas baru.
+      Kita pakai <form> supaya menekan Enter juga bisa menambah tugas.
+    -->
+    <form id="form-tugas" class="form-tugas">
+      <input
+        type="text"
+        id="input-tugas"
+        class="input-tugas"
+        placeholder="Tulis tugas baru..."
+        autocomplete="off"
+        required>
+      <button type="submit" class="btn-tambah">Tambah</button>
+    </form>
+
+    <!-- Ringkasan jumlah tugas -->
+    <p id="info-tugas" class="info-tugas"></p>
+
+    <!--
+      Daftar tugas akan diisi oleh JavaScript.
+      Awalnya kosong; setiap tugas = satu <li>.
+    -->
+    <ul id="daftar-tugas" class="daftar-tugas"></ul>
+
+    <!-- Pesan saat belum ada tugas sama sekali -->
+    <p id="pesan-kosong" class="pesan-kosong">Belum ada tugas. Tambah satu di atas!</p>
+
+  </main>
+
+  <!-- File JavaScript: semua logika aplikasi ada di sini -->
+  <script src="script.js"></script>
+</body>
+</html>
