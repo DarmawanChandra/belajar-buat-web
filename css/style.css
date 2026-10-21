@@ -443,12 +443,15 @@ html[data-tema="gelap"] .toggle-tema .ikon-bulan    { display: none; }
 }
 
 /* Hiasan jendela kode */
+/* Jendela kode: latar SELALU gelap (seperti code editor sungguhan),
+   supaya teks warna-warni tetap jelas di tema terang maupun gelap -
+   tidak menyatu dengan latar halaman. */
 .code-window {
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius);
-  background-color: var(--color-surface);
-  box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.7);
+  background-color: #1e293b;            /* biru tua gelap, tetap */
+  box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.6);
 }
 
 .code-window-bar {
@@ -456,7 +459,7 @@ html[data-tema="gelap"] .toggle-tema .ikon-bulan    { display: none; }
   align-items: center;
   gap: 0.5rem;
   padding: 0.85rem 1rem;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .dot {
@@ -473,7 +476,7 @@ html[data-tema="gelap"] .toggle-tema .ikon-bulan    { display: none; }
   margin-left: 0.5rem;
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .code-window pre {
@@ -481,6 +484,7 @@ html[data-tema="gelap"] .toggle-tema .ikon-bulan    { display: none; }
   padding: 1.5rem;
   font-size: 0.85rem;
   line-height: 1.8;
+  color: #e2e8f0;             /* teks dasar kode: abu terang */
 }
 
 /* Warna-warni kode, seperti di code editor */
@@ -488,6 +492,7 @@ html[data-tema="gelap"] .toggle-tema .ikon-bulan    { display: none; }
 .code-prop    { color: #7dd3fc; }
 .code-string  { color: #86efac; }
 .code-number  { color: #fdba74; }
+.code-punct   { color: #94a3b8; }
 
 /* Layar ≥ 900px: teks di kiri, jendela kode di kanan */
 @media (min-width: 900px) {
