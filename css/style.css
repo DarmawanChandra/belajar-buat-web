@@ -27,9 +27,10 @@
    (contoh: 56, 189, 248 adalah kode RGB dari #38bdf8).
    ---------------------------------------------------------------- */
 :root {
-  --color-bg: #ECF0F1;                          /* latar belakang utama (putih keabuan) */
-  --color-surface: #ffffff;                     /* latar kartu (putih) */
-  --color-border: rgba(44, 62, 80, 0.16);       /* garis tepi tipis */
+  --color-bg: #DCE3E6;                          /* latar belakang utama (abu sejuk, agak gelap dari kartu) */
+  --color-surface: #ffffff;                     /* latar kartu (putih, menonjol di atas latar) */
+  --color-border: rgba(44, 62, 80, 0.22);       /* garis tepi jelas */
+  --color-shadow: rgba(44, 62, 80, 0.18);       /* bayangan kartu agar terangkat */
   --color-text: #2C3E50;                        /* teks utama (biru tua gelap) */
   --color-text-muted: #7F8C8D;                  /* teks pendukung (abu) */
 
@@ -58,9 +59,10 @@
    komponen lain otomatis ikut berubah karena memakai variabel ini.
    ---------------------------------------------------------------- */
 html[data-tema="gelap"] {
-  --color-bg: #2C3E50;                          /* latar gelap */
-  --color-surface: #34495E;                     /* latar kartu */
-  --color-border: rgba(236, 240, 241, 0.16);
+  --color-bg: #22303E;                          /* latar gelap (lebih gelap dari kartu) */
+  --color-surface: #3C526A;                     /* latar kartu (lebih terang, menonjol) */
+  --color-border: rgba(236, 240, 241, 0.22);
+  --color-shadow: rgba(0, 0, 0, 0.45);          /* bayangan kartu agar terangkat */
   --color-text: #ECF0F1;                        /* teks terang */
   --color-text-muted: #BCD3C7;                  /* teks pendukung */
 
@@ -246,6 +248,7 @@ code {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   background-color: var(--color-surface);
+  box-shadow: 0 6px 20px var(--color-shadow);   /* bayangan agar kartu terangkat dari latar */
 }
 
 /* Label kecil berbentuk kapsul (untuk teknologi/skill) */
