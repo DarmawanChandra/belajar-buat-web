@@ -11,7 +11,7 @@
 
   <title>Darmawan Chandra | Portofolio</title>
   <!-- Deskripsi singkat yang muncul di hasil pencarian Google -->
-  <meta name="description" content="Portofolio Darmawan Chandra, web developer pemula yang sedang belajar membangun website dari nol.">
+  <meta name="description" content="Portofolio Darmawan Chandra, web developer junior yang sedang belajar membangun website dari nol.">
 
   <!-- Judul & deskripsi saat link dibagikan di WhatsApp, LinkedIn, dll. -->
   <meta property="og:title" content="Darmawan Chandra | Portofolio">
@@ -45,8 +45,30 @@
         <li><a href="#proyek">Proyek</a></li>
         <li><a href="#kontak">Kontak</a></li>
         <li>
-          <!-- Tombol ganti tema terang/gelap. Teksnya diisi oleh JavaScript. -->
-          <button type="button" id="toggle-tema" class="toggle-tema" aria-label="Ganti tema terang/gelap">Gelap</button>
+          <!-- Tombol ganti tema terang/gelap.
+               Isinya dua gambar SVG: matahari (untuk tema terang) dan
+               bulan (untuk tema gelap). CSS yang memilih mana yang tampil.
+               Bukan emoji - ini gambar vektor yang bisa diwarnai. -->
+          <button type="button" id="toggle-tema" class="toggle-tema" aria-label="Ganti tema terang/gelap" title="Ganti tema terang/gelap">
+            <!-- Gambar matahari: lingkaran dengan sinar -->
+            <svg class="ikon-matahari" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <circle cx="12" cy="12" r="4.2" fill="currentColor"/>
+              <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="12" y1="2"  x2="12" y2="4.5"/>
+                <line x1="12" y1="19.5" x2="12" y2="22"/>
+                <line x1="2"  y1="12" x2="4.5" y2="12"/>
+                <line x1="19.5" y1="12" x2="22" y2="12"/>
+                <line x1="4.9" y1="4.9" x2="6.7" y2="6.7"/>
+                <line x1="17.3" y1="17.3" x2="19.1" y2="19.1"/>
+                <line x1="4.9" y1="19.1" x2="6.7" y2="17.3"/>
+                <line x1="17.3" y1="6.7" x2="19.1" y2="4.9"/>
+              </g>
+            </svg>
+            <!-- Gambar bulan: bentuk bulan sabit -->
+            <svg class="ikon-bulan" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+            </svg>
+          </button>
         </li>
       </ul>
     </nav>
@@ -67,7 +89,7 @@
           Halo, saya<br>
           <span class="gradient-text">Darmawan Chandra</span>
         </h1>
-        <p class="hero-role">Web Developer Pemula</p>
+        <p class="hero-role">Web Developer Junior</p>
         <p class="hero-desc">
           Saya sedang belajar membangun website dari nol. Di sini saya
           mengumpulkan semua proyek yang saya buat selama belajar, dari yang
@@ -109,7 +131,7 @@
       <div class="about">
         <div class="about-text">
           <p>
-            Halo! Saya Darmawan, pemula yang sedang serius belajar
+            Halo! Saya Darmawan, web developer junior yang sedang serius belajar
             <strong>web development</strong>. Saya percaya cara terbaik untuk
             belajar adalah <strong>langsung membuat sesuatu</strong>, jadi setiap
             materi yang saya pelajari saya ubah menjadi proyek nyata yang
@@ -195,8 +217,19 @@
 
         <!-- Proyek 1: website ini sendiri -->
         <article class="project-card">
-          <!-- Nanti ini bisa diganti dengan screenshot proyek -->
-          <div class="project-thumb" aria-hidden="true">Web</div>
+          <!-- Gambar proyek: jendela browser -->
+          <div class="project-thumb" aria-hidden="true">
+            <svg viewBox="0 0 160 90" class="thumb-svg" preserveAspectRatio="xMidYMid meet">
+              <rect x="20" y="16" width="120" height="62" rx="7" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="2"/>
+              <rect x="20" y="16" width="120" height="14" rx="7" fill="var(--color-accent)"/>
+              <circle cx="30" cy="23" r="2.2" fill="#fff"/>
+              <circle cx="38" cy="23" r="2.2" fill="#fff"/>
+              <circle cx="46" cy="23" r="2.2" fill="#fff"/>
+              <rect x="30" y="40" width="46" height="6" rx="3" fill="var(--color-accent)"/>
+              <rect x="30" y="52" width="80" height="4" rx="2" fill="var(--color-text-muted)"/>
+              <rect x="30" y="61" width="64" height="4" rx="2" fill="var(--color-text-muted)"/>
+            </svg>
+          </div>
           <div class="project-body">
             <span class="badge badge-live">Live</span>
             <h3>Website Portofolio</h3>
@@ -214,7 +247,20 @@
 
         <!-- Proyek 2: To-Do List (Tahap 2) -->
         <article class="project-card">
-          <div class="project-thumb" aria-hidden="true">To-Do</div>
+          <!-- Gambar proyek: daftar centang -->
+          <div class="project-thumb" aria-hidden="true">
+            <svg viewBox="0 0 160 90" class="thumb-svg" preserveAspectRatio="xMidYMid meet">
+              <rect x="34" y="18" width="92" height="54" rx="7" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="2"/>
+              <rect x="46" y="30" width="10" height="10" rx="3" fill="var(--color-accent)"/>
+              <path d="M48 35 l2 2 l4 -4" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="62" y="33" width="52" height="4" rx="2" fill="var(--color-text-muted)"/>
+              <rect x="46" y="46" width="10" height="10" rx="3" fill="var(--color-accent)"/>
+              <path d="M48 51 l2 2 l4 -4" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="62" y="49" width="44" height="4" rx="2" fill="var(--color-text-muted)"/>
+              <rect x="46" y="62" width="10" height="10" rx="3" fill="none" stroke="var(--color-text-muted)" stroke-width="2"/>
+              <rect x="62" y="65" width="48" height="4" rx="2" fill="var(--color-text-muted)"/>
+            </svg>
+          </div>
           <div class="project-body">
             <span class="badge badge-live">Live</span>
             <h3>To-Do List</h3>
@@ -232,7 +278,18 @@
 
         <!-- Proyek 3: segera hadir (Tahap 3) -->
         <article class="project-card is-soon">
-          <div class="project-thumb" aria-hidden="true">Rp</div>
+          <!-- Gambar proyek: grafik keuangan -->
+          <div class="project-thumb" aria-hidden="true">
+            <svg viewBox="0 0 160 90" class="thumb-svg" preserveAspectRatio="xMidYMid meet">
+              <line x1="34" y1="22" x2="34" y2="70" stroke="var(--color-text-muted)" stroke-width="2" stroke-linecap="round"/>
+              <line x1="34" y1="70" x2="122" y2="70" stroke="var(--color-text-muted)" stroke-width="2" stroke-linecap="round"/>
+              <rect x="46" y="50" width="12" height="20" rx="2" fill="var(--color-accent)"/>
+              <rect x="66" y="40" width="12" height="30" rx="2" fill="var(--color-accent)"/>
+              <rect x="86" y="30" width="12" height="40" rx="2" fill="var(--color-accent)"/>
+              <rect x="106" y="44" width="12" height="26" rx="2" fill="var(--color-accent)"/>
+              <path d="M46 48 L72 38 L92 28 L112 42" fill="none" stroke="var(--color-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <div class="project-body">
             <span class="badge">Segera Hadir</span>
             <h3>Pencatat Keuangan</h3>
@@ -249,7 +306,16 @@
 
         <!-- Proyek 4: Papan Skor Olahraga -->
         <article class="project-card">
-          <div class="project-thumb" aria-hidden="true">Skor</div>
+          <!-- Gambar proyek: papan skor -->
+          <div class="project-thumb" aria-hidden="true">
+            <svg viewBox="0 0 160 90" class="thumb-svg" preserveAspectRatio="xMidYMid meet">
+              <rect x="28" y="22" width="48" height="46" rx="7" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="2"/>
+              <rect x="84" y="22" width="48" height="46" rx="7" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="2"/>
+              <text x="52" y="56" text-anchor="middle" font-family="sans-serif" font-size="26" font-weight="700" fill="var(--color-accent)">3</text>
+              <text x="108" y="56" text-anchor="middle" font-family="sans-serif" font-size="26" font-weight="700" fill="var(--color-text-muted)">1</text>
+              <text x="80" y="52" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="700" fill="var(--color-text-muted)">:</text>
+            </svg>
+          </div>
           <div class="project-body">
             <span class="badge badge-live">Live</span>
             <h3>Papan Skor Olahraga</h3>
@@ -322,14 +388,13 @@
     const tombolTema = document.getElementById("toggle-tema");
     const akar = document.documentElement; // elemen <html>
 
-    // Terapkan tema dan perbarui teks tombol.
+    // Terapkan tema. Gambar matahari/bulan dipilih oleh CSS
+    // berdasarkan atribut data-tema, jadi di sini cukup set atribut.
     function terapkanTema(tema) {
       if (tema === "gelap") {
         akar.setAttribute("data-tema", "gelap");
-        tombolTema.textContent = "Terang";
       } else {
         akar.removeAttribute("data-tema");
-        tombolTema.textContent = "Gelap";
       }
     }
 
