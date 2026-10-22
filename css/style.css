@@ -663,6 +663,11 @@ html[data-tema="gelap"] .toggle-tema .ikon-bulan    { display: none; }
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* Kartu dengan atribut "hidden" benar-benar disembunyikan */
+.project-card[hidden] {
+  display: none;
+}
+
 .project-card:hover {
   transform: translateY(-6px);
   border-color: var(--color-accent);
