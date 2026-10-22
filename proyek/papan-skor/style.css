@@ -168,6 +168,15 @@ body {
 .area-tap:disabled { opacity: 0.4; cursor: not-allowed; }
 .area-tap:focus-visible { outline: 3px solid var(--color-accent-soft); outline-offset: 3px; }
 
+/* Kedip warna saat poin bertambah: hijau lembut lalu kembali biru gelap */
+.area-tap.kedip {
+  animation: kedip-poin 0.35s ease-out;
+}
+@keyframes kedip-poin {
+  0%   { background-color: var(--color-accent-soft); color: var(--color-text); }
+  100% { background-color: var(--color-accent); color: #ffffff; }
+}
+
 .petunjuk-tap {
   font-size: 0.85rem;
   font-weight: 600;

@@ -142,12 +142,25 @@ function render() {
 /* ----------------------------------------------------------------
    7. Tambah 1 poin untuk pemain "nomor"
    ---------------------------------------------------------------- */
+
+// Bikin kotak tap pemain "nomor" berkedip sebentar.
+// Kelas dilepas dulu lalu dipasang lagi, supaya tap cepat berturut-turut
+// tetap memunculkan kedipan baru.
+function kedip(nomor) {
+  const kotak = sisi[nomor].querySelector(".area-tap");
+  kotak.classList.remove("kedip");
+  void kotak.offsetWidth;   // paksa browser "lupa" animasi sebelumnya
+  kotak.classList.add("kedip");
+}
+
 function tambahPoin(nomor) {
   if (matchSelesai) return;
 
-  // Getar singkat di HP (kalau didukung), jadi wasit tahu tap-nya masuk
-  // tanpa harus melihat layar.
-  if (navigator.vibrate) navigator.vibrate(40);
+  // Tanda poin masuk, supaya wasit yakin tap-nya terhitung:
+  // 1. Getar (Android). iPhone tidak mendukung getar dari situs web.
+  // 2. Kotak berkedip warna (semua HP, termasuk iPhone).
+  if (navigator.vibrate) navigator.vibrate(90);
+  kedip(nomor);
 
   skor[nomor].poin++;
 
