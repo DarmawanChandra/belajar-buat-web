@@ -145,6 +145,10 @@ function render() {
 function tambahPoin(nomor) {
   if (matchSelesai) return;
 
+  // Getar singkat di HP (kalau didukung), jadi wasit tahu tap-nya masuk
+  // tanpa harus melihat layar.
+  if (navigator.vibrate) navigator.vibrate(40);
+
   skor[nomor].poin++;
 
   // Cek apakah game ini dimenangkan

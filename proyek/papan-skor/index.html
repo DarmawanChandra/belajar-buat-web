@@ -21,7 +21,7 @@
     <header class="app-header">
       <a href="../../index.html" class="back-link">&larr; Kembali ke Portofolio</a>
       <h1>Papan Skor</h1>
-      <p class="app-subtitle">Pilih olahraga, lalu tekan tombol untuk menambah poin. Pemenang dihitung otomatis sesuai aturan tiap olahraga.</p>
+      <p class="app-subtitle">Pilih olahraga, lalu tap kotak skor untuk menambah poin. Pemenang dihitung otomatis sesuai aturan tiap olahraga.</p>
     </header>
 
     <!--
@@ -51,25 +51,29 @@
         <!-- Jumlah game yang dimenangkan (titik-titik) -->
         <div class="game-menang" id="game-1" aria-label="Game dimenangkan Pemain 1"></div>
 
-        <!-- Skor besar -->
-        <div class="skor" id="skor-1">0</div>
+        <!--
+          Area tap besar: skor + tombol tambah jadi satu.
+          Tap di mana saja di kotak ini = +1. Cocok untuk wasit
+          yang tangannya basah, tidak perlu cari tombol kecil.
+        -->
+        <button type="button" class="area-tap btn-tambah" data-pemain="1" aria-label="Tambah 1 poin untuk Pemain 1">
+          <span class="skor" id="skor-1">0</span>
+          <span class="petunjuk-tap">Tap untuk +1</span>
+        </button>
 
-        <!-- Tombol tambah / kurang -->
-        <div class="tombol-skor">
-          <button type="button" class="btn-poin btn-tambah" data-aksi="tambah" data-pemain="1">+1</button>
-          <button type="button" class="btn-poin btn-kurang" data-aksi="kurang" data-pemain="1" aria-label="Kurangi poin Pemain 1">&minus;</button>
-        </div>
+        <!-- Tombol kurang dibuat terpisah dan agak jauh, supaya tidak kepencet -->
+        <button type="button" class="btn-kurang" data-pemain="1" aria-label="Kurangi poin Pemain 1">&minus; Koreksi</button>
       </article>
 
       <!-- ===== Pemain 2 ===== -->
       <article class="sisi" data-pemain="2">
         <h2 class="nama-pemain" contenteditable="true" spellcheck="false">Pemain 2</h2>
         <div class="game-menang" id="game-2" aria-label="Game dimenangkan Pemain 2"></div>
-        <div class="skor" id="skor-2">0</div>
-        <div class="tombol-skor">
-          <button type="button" class="btn-poin btn-tambah" data-aksi="tambah" data-pemain="2">+1</button>
-          <button type="button" class="btn-poin btn-kurang" data-aksi="kurang" data-pemain="2" aria-label="Kurangi poin Pemain 2">&minus;</button>
-        </div>
+        <button type="button" class="area-tap btn-tambah" data-pemain="2" aria-label="Tambah 1 poin untuk Pemain 2">
+          <span class="skor" id="skor-2">0</span>
+          <span class="petunjuk-tap">Tap untuk +1</span>
+        </button>
+        <button type="button" class="btn-kurang" data-pemain="2" aria-label="Kurangi poin Pemain 2">&minus; Koreksi</button>
       </article>
 
     </section>

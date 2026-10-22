@@ -137,48 +137,59 @@ body {
 
 /* Skor besar */
 .skor {
-  font-size: 4.5rem;
+  font-size: 5rem;
   font-weight: 800;
   line-height: 1;
   font-variant-numeric: tabular-nums;  /* angka tidak geser saat berubah */
 }
 
-/* Tombol + / - */
-.tombol-skor {
+/* Area tap besar: seluruh kotak ini adalah tombol +1 */
+.area-tap {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 0.6rem;
   width: 100%;
-  justify-content: center;
-}
-.btn-poin {
+  min-height: 220px;
+  padding: 1.5rem 1rem;
   font-family: inherit;
-  font-weight: 700;
-  border: none;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.1s ease;
-}
-.btn-poin:active { transform: scale(0.95); }
-.btn-poin:disabled { opacity: 0.4; cursor: not-allowed; }
-
-.btn-tambah {
-  flex: 1;
-  max-width: 130px;
-  padding: 0.8rem;
-  font-size: 1.1rem;
   color: #ffffff;
   background-color: var(--color-accent);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  touch-action: manipulation;          /* tap cepat 2x tidak bikin layar zoom */
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;                   /* teks tidak ter-blok saat ditekan lama */
+  transition: opacity 0.2s ease, transform 0.08s ease;
 }
-.btn-tambah:hover:not(:disabled) { opacity: 0.88; }
+.area-tap:active:not(:disabled) { transform: scale(0.97); opacity: 0.9; }
+.area-tap:disabled { opacity: 0.4; cursor: not-allowed; }
+.area-tap:focus-visible { outline: 3px solid var(--color-accent-soft); outline-offset: 3px; }
 
+.petunjuk-tap {
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+/* Tombol koreksi (kurangi): kecil dan diberi jarak dari area tap */
 .btn-kurang {
-  width: 48px;
-  font-size: 1.3rem;
+  margin-top: 0.75rem;
+  padding: 0.55rem 1.2rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--color-text-muted);
   background-color: transparent;
   border: 1px solid var(--color-border);
+  border-radius: 999px;
+  cursor: pointer;
+  touch-action: manipulation;
 }
 .btn-kurang:hover:not(:disabled) { color: var(--color-text); }
+.btn-kurang:disabled { opacity: 0.4; cursor: not-allowed; }
 
 /* ---------- Pengumuman pemenang ---------- */
 .pengumuman {
@@ -214,8 +225,11 @@ body {
 /* Kelas bantu */
 .sembunyi { display: none; }
 
-/* Layar kecil (HP): sisi pemain ditumpuk ke bawah */
+/* Layar kecil (HP): tetap kiri-kanan seperti lapangan, area tap dibuat tinggi */
 @media (max-width: 520px) {
-  .papan { grid-template-columns: 1fr; }
-  .skor { font-size: 3.5rem; }
+  body { padding: 1.25rem 0.75rem; }
+  .papan { gap: 0.6rem; }
+  .sisi { padding: 1rem 0.5rem; }
+  .area-tap { min-height: 260px; }
+  .skor { font-size: 4rem; }
 }
